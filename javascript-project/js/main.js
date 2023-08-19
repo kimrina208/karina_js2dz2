@@ -57,7 +57,7 @@ const autoSlider = (i = 0) => {
         }
         hideSlide()
         showSlide(i)
-    }, 10000)
+    }, 3000)
 }
 
 next.onclick = () => {
@@ -73,3 +73,36 @@ prev.onclick = () => {
 }
 
 autoSlider(index)
+
+//МОДАЛЬНОЕ ОКНО
+  let modalShown = false;
+
+  function showModal() {
+    if (!modalShown) {
+      alert("Модальное окно вызвано!");
+      modalShown = true;
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }
+
+  function handleScroll() {
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+      showModal();
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+
+
+   function showDelayedModal() {
+    setTimeout(function () {
+      alert("Модальное окно вызвано через 10 секунд!");
+    }, 10000);
+  }
+
+  window.addEventListener('load', showDelayedModal);
+
+
+
+
+
